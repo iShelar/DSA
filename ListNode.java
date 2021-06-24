@@ -73,13 +73,30 @@ public class ListNode {
             System.out.println();
         }
     }
+
+    /**
+     * Reverse LinkedList using Recursion
+     * @param node
+     */
+    public void reverseLinkedList(Node node) {
+        if(node.next == null) {
+            this.head = node;
+            return;
+        }
+        reverseLinkedList(node.next);
+        node.next.next = node;
+        node.next = null;
+    }
+    
     public static void main(String[] args) throws Exception {
         ListNode ln = new ListNode();
         ln.append(10);
         ln.append(20);
-        ln.insert(2,5);
+        ln.append(30);
+        ln.append(40);
+        ln.append(50);
         ln.printList();
-        ln.remove(2);
+        ln.reverseLinkedList(ln.head);
         ln.printList();
     }
 }
