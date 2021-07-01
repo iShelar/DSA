@@ -26,8 +26,18 @@ public class Stack {
         if(this.bottom == null) {
             System.out.println("Stack is empty");
         } else {
-            int data = this.bottom.data;
-            this.bottom = this.bottom.next;
+            int data = this.top.data;
+            Node leader = this.bottom;
+            if(this.top == this.bottom) {
+                this.top = null;
+                this.bottom = null;
+            } else {
+                while(leader.next != this.top) {
+                    leader = leader.next;
+                }
+                this.top = leader;
+                this.top.next = null;
+            }
             return data;
         }
         return 0;
